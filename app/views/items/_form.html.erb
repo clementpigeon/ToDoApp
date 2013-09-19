@@ -1,5 +1,5 @@
-<% action = @project.persisted? ? @project : projects_url %>
-<% method = @project.persisted? ? 'put' : 'post' %>
+<% action = @item.persisted? ? @item : items_url %>
+<% method = @item.persisted? ? 'put' : 'post' %>
 
 <style>
 label {
@@ -15,11 +15,11 @@ label {
 
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" id="authenticity_token">
 
-  <label for="project_name">Name of project</label>
+  <label for="project_name">Title</label>
   <input
     type="text"
     name="project[name]"
-    value="<%= @project.name %>"
+    value="<%= @item.title %>"
     id="project_name">
 
 
@@ -29,7 +29,7 @@ label {
   </textarea>
   <br><br>
 
-  <select name="project_team_id" id="project[team_id]<br>" >
+  <select name="project_team_id" id="project[team_id]" >
     <option value="">Select team</option>
 
     <% @teams.each do |team| %>

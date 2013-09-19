@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130919210127) do
+ActiveRecord::Schema.define(:version => 20130919211258) do
+
+  create_table "items", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.boolean  "completed"
+    t.integer  "project_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "items", ["project_id"], :name => "index_items_on_project_id"
 
   create_table "projects", :force => true do |t|
     t.string   "name"
