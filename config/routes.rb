@@ -1,5 +1,8 @@
 ToDoApp::Application.routes.draw do
-  resources :projects
+
+  resources :projects do
+    resources :items
+  end
 
 
   # The priority is based upon order of creation:

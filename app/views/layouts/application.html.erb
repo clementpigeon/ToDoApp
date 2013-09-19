@@ -2,11 +2,12 @@
 <html>
 <head>
   <title>ToDoApp</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+  <!-- <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %> -->
   <%= csrf_meta_tags %>
 </head>
 <body>
+<%= flash[:errors] if flash[:errors]  && !flash[:errors].empty? %>
 
 <%= yield %>
 
