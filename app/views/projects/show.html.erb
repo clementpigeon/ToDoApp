@@ -1,12 +1,10 @@
-<p id="notice"><%= notice %></p>
-
 <p>
-  <b>Name:</b>
+  <b>Name</b>
   <%= @project.name %>
 </p>
 
 <p>
-  <b>Description:</b>
+  <b>Description:</b><br>
   <%= @project.description %>
 </p>
 
@@ -16,5 +14,8 @@
 </p>
 
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<%= link_to "Add an item to this project", new_project_item_url(@project) %><br>
+
+
+<%= link_to 'Edit', edit_project_url(@project) %><br>
+<%= link_to 'All projects', projects_path %>

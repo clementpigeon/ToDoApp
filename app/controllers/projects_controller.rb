@@ -37,8 +37,6 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(params[:project])
 
-    # render json: params
-
     if @project.save
       redirect_to @project
     else
