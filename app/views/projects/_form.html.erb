@@ -25,11 +25,10 @@ label {
 
 
   <label for="project_description">Description of project</label>
-  <textarea id="project_description" name="project[description]"><%= @project.description %>
-  </textarea>
+  <textarea id="project_description" name="project[description]"><%= @project.description %></textarea>
   <br><br>
 
-  <select name="project_team_id" id="project[team_id]<br>" >
+  <select name="project[team_id]" id="project_team_id" >
     <option value="">Select team</option>
 
     <% @teams.each do |team| %>
