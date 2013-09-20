@@ -13,6 +13,17 @@
   <%= @project.team_id %>
 </p>
 
+<p>
+  <b>ToDo Items:</b>
+</p>
+<ul>
+<% @project.items.each do |item| %>
+  <li><%= link_to item.title, project_item_url(@project.id, item.id) %>
+
+  </li>
+<% end %>
+</ul>
+<hr>
 
 <%= link_to "Add an item to this project", new_project_item_url(@project) %><br>
 

@@ -10,7 +10,7 @@ class ProjectsController < ApplicationController
 
 
   def show
-    @project = Project.find(params[:id])
+    @project = Project.includes(:items).find(params[:id])
 
     render :show
   end
