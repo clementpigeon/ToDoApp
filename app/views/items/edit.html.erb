@@ -1,6 +1,5 @@
-<h1>Editing project</h1>
+<h1>Edit item</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @project %> |
-<%= link_to 'Back', projects_path %>
+<%= link_to 'Cancel', project_item_url(@item.project_id, @item.id) %>

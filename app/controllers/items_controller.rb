@@ -22,8 +22,27 @@ class ItemsController < ApplicationController
 
       render :new
     end
-
   end
 
+  def edit
+    @item = Item.find(params[:id])
+    render :edit
+  end
+
+
+  def update
+    @item = Item.find(params[:id])
+    @project = Project.find(params[:item][:project_id])
+    @item.update_attributes(params[:item])
+
+    if @item.save
+      redirect_to project_item_url(@project.id, @item.id)
+    else
+      flash[:errors] = @item.errors.full_messages
+
+      render :new
+    end
+
+  end
 
 end

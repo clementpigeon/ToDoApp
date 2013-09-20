@@ -1,4 +1,4 @@
-<% action = @item.persisted? ? @item : items_url %>
+<% action = @item.persisted? ? project_item_url(@item.project_id, @item.id) : items_url %>
 <% method = @item.persisted? ? 'put' : 'post' %>
 
 <style>
@@ -15,7 +15,7 @@ label {
 
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" id="authenticity_token">
 
-  <input type="hidden" name="item[project_id]" value="<%= @project.id %>" id="item_project_id">
+  <input type="hidden" name="item[project_id]" value="<%= @item.project_id %>" id="item_project_id">
 
   <label for="item_title">Title</label>
   <input
@@ -29,8 +29,6 @@ label {
   <label for="item_description">Description</label>
   <textarea id="item_description" name="item[description]"><%= @item.description %></textarea>
   <br><br>
-
-
 
   <p><input type="submit" value="Save"></p>
 </form>
