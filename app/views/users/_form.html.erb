@@ -1,33 +1,41 @@
-<%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<% action = @user.persisted? ? user_url(@user) : users_url %>
+<% method = @user.persisted? ? 'put' : 'post' %>
 
-      <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
+<style>
+label {
+  font-weight: bold;
+  display: block;
+  margin-top: 12px;
+  margin-bottom: 4px;
+}
+</style>
+
+<form action="<%= action %>" method="post" accept-charset="utf-8">
+  <input type="hidden" name="_method" value="<%= method %>">
+
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" id="authenticity_token">
+
+  <label for="user_name">Name</label>
+  <input
+    type="text"
+    name="user[name]"
+    value="<%= @user.name %>"
+    id="user_name">
+
+    <label for="user_name">Email</label>
+    <input
+      type="text"
+      name="user[email]"
+      value="<%= @user.email %>"
+      id="user_email">
+      <br><br>
+  <input type="hidden" name="user[team_ids][]" value="">
+
+  <% @teams.each do |team| %>
+      <% checked = @user.teams.include?(team) ? "checked" : '' %>
+      <input <%= checked %> type="checkbox" name="user[team_ids][]" value="<%= team.id %>"><%= team.name %><br>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :password_digest %><br />
-    <%= f.text_field :password_digest %>
-  </div>
-  <div class="field">
-    <%= f.label :token %><br />
-    <%= f.text_field :token %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+  <p><input type="submit" value="Save"></p>
+</form>
+

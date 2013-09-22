@@ -8,6 +8,7 @@ class TeamsController < ApplicationController
 
   def show
     @team = Team.find(params[:id])
+    # @team = Team.includes(:members).find(params[:id])
     render :show
   end
 

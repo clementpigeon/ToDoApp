@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :name, :password_digest, :token
+  attr_accessible :email, :name, :password_digest, :token, :team_ids
 
   has_many(
   :team_memberships,

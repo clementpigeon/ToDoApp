@@ -14,12 +14,14 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @teams = Team.all
     render :new
   end
 
 
   def edit
     @user = User.find(params[:id])
+    @teams = Team.all
     render :edit
   end
 
