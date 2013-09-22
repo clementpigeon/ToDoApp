@@ -1,10 +1,10 @@
 ToDoApp::Application.routes.draw do
 
   resources :projects do
-    resources :items, except: [:create]
+    resources :items
   end
 
-  resources :items, only: [:create]
+  resources :items
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

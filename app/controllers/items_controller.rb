@@ -8,7 +8,7 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @project = Project.find(params[:project_id])
+    @projects = Project.all
     render :new
   end
 
@@ -24,6 +24,7 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
+    @projects = Project.all
     render :edit
   end
 
@@ -41,6 +42,10 @@ class ItemsController < ApplicationController
       render :new
     end
 
+  end
+
+  def index
+    @items = Item.includes(:project).all
   end
 
 end
