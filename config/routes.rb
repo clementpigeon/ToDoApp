@@ -1,13 +1,16 @@
 ToDoApp::Application.routes.draw do
 
-  resources :teams
+  resources :users
 
+  resources :teams
 
   resources :projects do
     resources :items
   end
 
   resources :items
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
