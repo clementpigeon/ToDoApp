@@ -44,6 +44,11 @@ label {
   <textarea id="item_description" name="item[description]"><%= @item.description %></textarea>
   <br><br>
 
+    <% completed = @item.completed ? "checked" : "" %>
+  <input type="hidden" name="item[completed]" value="false">
+  <input <%= completed %> type="checkbox" name="item[completed]" value="true"> Completed
+
+
   <p><input type="submit" value="Save"></p>
 </form>
 
