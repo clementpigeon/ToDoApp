@@ -37,14 +37,14 @@ class ItemsController < ApplicationController
       redirect_to project_item_url(@project.id, @item.id)
     else
       flash[:errors] = @item.errors.full_messages
-
-      render :new
+      render :update
     end
 
   end
 
   def index
     @items = Item.includes(:project).all
+    render :index
   end
 
 end
