@@ -1,5 +1,8 @@
 ToDoApp::Application.routes.draw do
 
+  resources :teams
+
+
   resources :projects do
     resources :items
   end
