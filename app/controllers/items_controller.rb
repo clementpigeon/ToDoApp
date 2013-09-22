@@ -14,13 +14,11 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(params[:item])
-    @project = Project.find(params[:item][:project_id])
     if @item.save
-      redirect_to project_item_url(@project.id, @item.id)
+      redirect_to project_item_url(params[:item][:project_id], @item.id)
     else
       flash[:errors] = @item.errors.full_messages
-
-      render :new
+      redirect_to new_project_item_url(params[:item][:project_id])
     end
   end
 
